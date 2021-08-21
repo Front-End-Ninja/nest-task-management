@@ -9,8 +9,9 @@ export class AuthCredentialsDto {
     @IsString()
     @MinLength(8)
     @MaxLength(32)
-    @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-        {message: 'password require at least 1 Upper case, lower case and number or special character'})
+    @Matches(/(?:(?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+        {message: 'password require at least 8 characters: 1 Upper case, lower case and number or special character'}
+    )
     password: string;
 }
 
