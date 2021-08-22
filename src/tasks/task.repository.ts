@@ -8,7 +8,7 @@ import {InternalServerErrorException, Logger} from "@nestjs/common";
 
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
-    private logger = new Logger('TaskRepository', {timestamp: true});
+    private logger = new Logger('TaskRepository', );
 
     async getTasks(filterDto: GetTasksFilterDto, user: User): Promise<Task[]> {
         const {status, search} = filterDto;
