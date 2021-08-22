@@ -13,8 +13,7 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
         TypeOrmModule.forRootAsync({
             imports: [ConfigModule],
             inject: [ConfigService],
-            useFactory: async (configService: ConfigService) => {
-                return {
+            useFactory: async (configService: ConfigService) => ({
                     type: 'postgres',
                     autoLoadEntities: true,
                     synchronize: true,
@@ -23,8 +22,7 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
                     username: configService.get('DB_USERNAME'),
                     password: configService.get('DB_PASSWORD'),
                     data: configService.get('DB_DATABASE'),
-                };
-            },
+            }),
         }),
         AuthModule,
     ],
